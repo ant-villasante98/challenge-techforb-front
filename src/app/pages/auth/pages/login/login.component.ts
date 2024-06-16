@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BannerComponent } from './component/banner/banner.component';
 import { LoginFormComponent } from './component/login-form/login-form.component';
 

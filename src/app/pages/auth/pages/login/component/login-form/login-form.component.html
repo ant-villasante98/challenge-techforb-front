@@ -2,37 +2,57 @@
     <h1 class="poppins-semibold text-[37px] text-[--color-text-primary]">Portal de monitoreo</h1>
     <h5 class="poppins-medium text-[25px] text-[--color-text-primary]">Iniciar sesión</h5>
 
-    <form class="mt-8 max-w-[380px]">
+    <form [formGroup]="formLogin" (submit)="submitLogin()" class="mt-8 max-w-[380px]">
 
         <!-- email -->
         <div class="relative z-0 w-full mb-5 group">
             <input type="email" name="floating_email" id="floating_email"
                 class="block py-3 px-3 w-full text-base text-[--color-text-primary] bg-transparent border border-[#DCDBDD] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
-                placeholder=" " required />
+                placeholder=" " required formControlName="email"
+                [ngClass]="{'border-red-600':email.touched && email.invalid}" />
             <label for="floating_email"
                 class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium absolute text-base text-[--color-text-secundary] duration-300 transform -translate-y-6 translate-x-3 scale-75 top-3 z-0 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Email
             </label>
+            @if (email.touched && email.invalid) {
+            <span class="pl-2 text-[13px] text-red-600"> Se requiere un email valido.</span>
+            }
         </div>
 
         <!-- contraseña -->
         <div class="relative z-0 w-full mb-5 group">
-            <input type="password" name="floating_password" id="floating_password"
+            <input [type]="showPassword()?'text':'password'" name="floating_password" id="floating_password"
                 class="block py-3 px-3 w-full text-base text-[--color-text-primary] bg-transparent border border-[#DCDBDD] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
-                placeholder=" " required />
+                placeholder=" " required formControlName="password"
+                [ngClass]="{'border-red-600':password.touched && password.invalid}" />
             <label for="floating_password"
                 class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium absolute text-base text-[--color-text-secundary] duration-300 transform -translate-y-6 translate-x-3 scale-75 top-3 z-0 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                 Contraseña
             </label>
+            <!-- show password -->
+            <button (click)="toggleVisiblePassword()" class="absolute right-4 top-5" type="button">
+                <img src="assets/svg/eye-password.svg" alt="">
+                <div [hidden]="!showPassword()"
+                    class="absolute -top-1 right-2 border-l-2 border-[#84818A] h-5 rotate-45"></div>
+            </button>
+
+            <!-- login fallido -->
+            @if (password.touched && password.errors?.["required"]) {
+            <span class="pl-2 text-[13px] text-red-600">Contraseña requerida.</span>
+            }
         </div>
+        @if (showUnauthorized()) {
+        <span class="block text-[13px] text-red-600 mt-1 leading-none">Email o Contraseña invalida.</span>
+        }
 
         <div class="flex justify-between items-center mt-4">
             <div>
                 <p class="poppins-regular text-[#47464A] text-[14px]">¿Olvidaste tu contraseña?</p>
             </div>
-            <div>
-                <!-- TODO: hacer un componenten del boton -->
-                <button class="rounded-2xl bg-[--color-primary] px-4 py-3 text-white">Iniciar sesión</button>
+            <div class="w-min">
+                <!-- <button class="rounded-2xl bg-[--color-primary] px-4 py-3 text-white">Iniciar sesión</button> -->
+                <button [disabled]="isSubmit()" type="submit" [ngClass]="{'opacity-70':isSubmit()}"
+                    class="poppins-medium w-max" appCustomBtn color="primary" text="white">Iniciar sesión</button>
             </div>
         </div>
     </form>
