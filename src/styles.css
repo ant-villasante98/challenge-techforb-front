@@ -9,6 +9,8 @@
     --color-text-primary: #202020;
     --color-text-secundary: #84818A;
     --color-primary: #33A3AA;
+
+    --w-sidebar: 80px
 }
 
 * {

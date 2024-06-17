@@ -1,1 +1,35 @@
-<p>dashboard works!</p>
+<div class="md:grid md:grid-cols-[var(--w-sidebar)_minmax(0,_1fr)] bg-[#F9F9FA] min-h-screen">
+    <!-- Sidebar -->
+    <div class="relative md:h-screen md:block" [ngClass]="{'hidden':!showSidevar()}">
+        <app-sidebar>
+            <button (click)="showSidevar.set(false)">
+                <svg class="size-6" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.896 6.96533L6.96533 20.896" stroke="#E02424" stroke-width="2.09217"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M6.96533 6.96533L20.896 20.896" stroke="#E02424" stroke-width="2.09217"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </app-sidebar>
+    </div>
+    <div class="grid grid-rows-[auto_minmax(0,_1fr)]">
+        <div class="pt-6">
+            <!-- Navbar -->
+            <app-navbar>
+                <div class="md:hidden">
+                    <button (click)="showSidevar.set(true)">
+                        <img src="assets/svg/menu.svg" alt="">
+                    </button>
+                </div>
+            </app-navbar>
+
+            <div class="border-b border-[#F3F3F3] md:hidden m-auto w-[calc(100%_-_2rem)]"></div>
+        </div>
+        <!-- Content -->
+        <div class="pt-3 w-full">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

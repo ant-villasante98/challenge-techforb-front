@@ -1,0 +1,8 @@
+:root {
+    --w-sidebar: 80px
+}
+
+.test {
+    display: grid;
+    grid-template-rows: 100px calc(100vh - 100px);
+}

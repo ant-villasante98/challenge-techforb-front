@@ -1,0 +1,42 @@
+<div class="absolute min-h-screen md:block top-0 left-0 w-[--w-sidebar]">
+    <div class="w-full flex flex-col items-center pt-6 bg-[#F9F9FA] min-h-screen shadow-md">
+        <div class="mb-6 mt-3 md:hidden">
+            <ng-content></ng-content>
+        </div>
+        <!-- logo -->
+        <div>
+            <img src="assets/svg/logo.svg" alt="">
+        </div>
+
+        <!-- menu -->
+        <ul class="mt-20 flex flex-col gap-10">
+            <li>
+                <a routerLink="/dashboard/monitoring">
+                    <img src="assets/svg/dashboard.svg" alt="">
+                </a>
+            </li>
+            <li>
+                <a routerLink="/dashboard/plant">
+                    <img src="assets/svg/m-plant.svg" alt="">
+                </a>
+            </li>
+            <li>
+                <a routerLink="/dashboard/sensor">
+                    <img src="assets/svg/m-sensor.svg" alt="">
+                </a>
+            </li>
+            <li>
+                <a routerLink="/dashboard/plant-history">
+                    <img src="assets/svg/m-plant-history.svg" alt="">
+                </a>
+            </li>
+            <li>
+                <a routerLink="/dashboard/logout">
+                    <img src="assets/svg/logout.svg" alt="">
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+</div>
