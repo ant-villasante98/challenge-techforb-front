@@ -1,4 +1,4 @@
-<div class="md:grid md:grid-cols-[var(--w-sidebar)_minmax(0,_1fr)] bg-[#F9F9FA] min-h-screen">
+<div class="md:grid md:grid-cols-[var(--w-sidebar)_minmax(0,_1fr)] bg-[#F9F9FA] min-h-screen md:bg-[#E9F1F4]">
     <!-- Sidebar -->
     <div class="relative md:h-screen md:block" [ngClass]="{'hidden':!showSidevar()}">
         <app-sidebar>
@@ -27,7 +27,7 @@
             <div class="border-b border-[#F3F3F3] md:hidden m-auto w-[calc(100%_-_2rem)]"></div>
         </div>
         <!-- Content -->
-        <div class="pt-3 w-full">
+        <div class="pt-3 px-6 w-full md:pl-[30px] md:pr-[50px]">
             <router-outlet></router-outlet>
         </div>
     </div>

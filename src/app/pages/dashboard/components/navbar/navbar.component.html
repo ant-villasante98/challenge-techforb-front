@@ -1,13 +1,38 @@
-<div class="flex justify-between items-center px-6 py-2">
+<div class="flex justify-between items-center px-6 py-2 md:pl-[30px] md:pr-[50px]">
+
     <ng-content></ng-content>
 
     <div class="md:hidden">
         <div class="bg-gray-700 size-14 -mt-10"></div>
     </div>
+    <div class="hidden md:block">
+        <h3 class="text-[30px] poppins-medium">Monitoreo global</h3>
+    </div>
     <div>
-        <button>
-            <img src="assets/svg/notification.svg" alt="">
-        </button>
+        <ul class="flex flex-row justify-center items-center gap-6">
+            <li class="hidden md:block">
+                <button>
+                    <img src="assets/svg/lenguage.svg" alt="">
+                </button>
+            </li>
+            <li class="hidden md:block">
+                <button>
+                    <img src="assets/svg/settings.svg" alt="">
+                </button>
+            </li>
+            <li class="relative">
+                <button class="-mx-2">
+                    <img class="" src="assets/svg/notification.svg" alt="">
+                </button>
+                <span class="absolute block size-2 bg-blue-700 rounded-full top-1 -right-1"></span>
+            </li>
+            <li class="hidden md:block">
+                <span class="text-[18px] poppins-semibold">
+                    Nombre de Usuario
+                </span>
+            </li>
+        </ul>
+
     </div>
 
 </div>
