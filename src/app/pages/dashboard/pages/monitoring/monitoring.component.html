@@ -14,19 +14,102 @@
             [number]="1354"></app-reading-card>
 
     </div>
-    <div class="bg-white mt-8 rounded-lg py-6">
-        <div class="px-8">
-            <span class="text-[16px] text-black poppins-semibold">
+    <div class="bg-white mt-6 sm:mt-8 rounded-lg p-6 ">
+        <div class="pb-4 sm:px-2 md:border-b-2 md:border-[#F3F6F7] ">
+            <span class="text-[18px] sm:text-[16px] text-black poppins-bold sm:poppins-semibold">
                 Plantas
             </span>
             <div class="inline-block pl-8">
 
-                <button class="text-[12px] poppins-medium py-1 rounded-md border-[#B0CAD1]" appCustomBtn
-                    [color]="'outline'" [text]="'black'">+ Crear
-                    nueva
-                    planta</button>
+                <button (click)="showCreatePlant.set(true)"
+                    class="text-[20px] font-semibold sm:text-[12px] sm:poppins-medium py-[4px] sm:py-1 rounded-md border-[#B0CAD1]"
+                    appCustomBtn [color]="'outline'" [text]="'black'">
+                    + <span class="hidden sm:inline">Crear nueva planta</span>
+                </button>
             </div>
+        </div>
+        <div class="mt-2">
+            <table class="w-full">
+                <thead>
+                    <tr class="hidden md:table-row text-[#B0CAD1] poppins-medium">
+                        <th>
+                            <div>
+                                País
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                Nombre de la planta
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                Lecturas
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                Alertas medias
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                Alertas rojas
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                Acciones
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of plantList() ; track $index) {
+                    <tr class="border-b border-[#EAEAEA] ">
+                        <td class="hidden md:table-cell">
+                            <div class="flex flex-row justify-start items-center">
+                                <div class="border border-gray-300 border-1 shadow-md">
+                                    <img class="w-5" [src]="item.country.flagImage" alt="bandera">
+                                </div>
+                                <div class="ml-2">
+                                    <span>
+                                        {{item.country.name}}
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex flex-row justify-start items-center md:hidden">
+                                <div class="border border-gray-300 border-1 shadow-md">
+                                    <img class="w-5" [src]="item.country.flagImage" alt="bandera">
+                                </div>
+                                <div class="ml-2">
+                                    <span>
+                                        {{item.country.name}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="text-[#848484] text-[12px] poppins-regular md:text-black">
+                                {{item.name}}
+                            </div>
+                        </td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
+                        <td>
+                            <div>
+                                <app-plant-action [plant-id]="item.id"></app-plant-action>
+                            </div>
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 
 </div>
+
+<app-create-plant-modal [show-create-plant]="showCreatePlant" (newPlantEmitter)="getPlants()"></app-create-plant-modal>

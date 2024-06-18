@@ -1,0 +1,56 @@
+<app-wrap-modal [showModal]="showModal" [staticModal]="true">
+    <div class="relative m-auto bg-white rounded-2xl py-5 px-8 pb-7">
+        <p class="text-[14px] text-black poppins-medium">Crear nueva planta</p>
+        <form [formGroup]="plantForm" (submit)="submitCreate()" class="mt-5">
+            <!-- nombre de planta -->
+            <div class="relative z-0 w-full group">
+                <label for="name"
+                    class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                    Nombre de Planta
+                </label>
+                <input type="name" name="name" id="name"
+                    class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer mt-1"
+                    placeholder="Ingrese nombre" required formControlName="name"
+                    [ngClass]="{'border-red-600':name.touched && name.invalid}" />
+
+                @if (name.touched && name.invalid) {
+                <span class="pl-2 text-[13px] text-red-600"> Se requiere un nombre.</span>
+                }
+            </div>
+            <div class="relative z-0 w-full mt-2 group mb-6">
+                <label for="country-index"
+                    class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                    País
+                </label>
+                <select formControlName="countryIndex" name="country-index" id="country-index" placehoder="Seleccione"
+                    class="block w-full max-w-[300px] text-sm text-[--color-text-primary] py-3 px-3 bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer mt-1">
+                    <option [value]="-1" [selected]="true" class="text-sm text-[--color-text-primary]" place>
+                        Seleccione un país</option>
+                    @for (item of countryList(); track $index) {
+                    <option [value]="$index">{{item.name}}</option>
+                    }
+
+                </select>
+                @if (countryIndex.touched && countryIndex.invalid) {
+                <span class="pl-2 text-[13px] text-red-600"> Se requiere un país.</span>
+                }
+            </div>
+
+
+            <div class="text-[14px] poppins-medium flex flex-row gap-3 mx-auto justify-center">
+                <div>
+                    <button (click)="close()" [disabled]="isDisable()"
+                        class="rounded-md border-[#33A3AA] text-[#33A3AA] px-[0] py-1.5 w-[120px]" appCustomBtn
+                        [color]="'outline'">Cancelar</button>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="isDisable()"
+                        class="rounded-md px-[0] py-1.5 w-[120px] border-[#33A3AA]" appCustomBtn [color]="'primary'"
+                        [text]="'white'">Crear</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</app-wrap-modal>

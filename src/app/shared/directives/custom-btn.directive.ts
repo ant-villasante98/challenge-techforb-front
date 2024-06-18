@@ -22,8 +22,8 @@ export class CustomBtnDirective implements OnInit {
     // console.log(this.color)
     this.domElement = this.elmentRef.nativeElement;
     // this.domElement.style.backgroundColor = `var(--color-${this.color})`;
-    this.domElement.className += ` px-8 py-4 rounded-2xl border `;
-    this.domElement.className += `bg-[--color-${this.color}] border-[--color-${this.color}] text-${this.text} `;
+    this.domElement.className += ` px-8 py-4 rounded-2xl border`;
+    this.domElement.className += ` bg-[--color-${this.color}] border-[--color-${this.color}] text-${this.text} `;
   }
 
 }
