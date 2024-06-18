@@ -1,3 +1,3 @@
 export const environment = {
-    API: "http://localhost:8091/api/v1"
+    API: "https://challenge-techforb-w7ba.onrender.com"
 };
