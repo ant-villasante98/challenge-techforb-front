@@ -24,7 +24,7 @@
                 </label>
                 <select formControlName="countryIndex" name="country-index" id="country-index" placehoder="Seleccione"
                     class="block w-full max-w-[300px] text-sm text-[--color-text-primary] py-3 px-3 bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer mt-1">
-                    <option [value]="-1" [selected]="true" class="text-sm text-[--color-text-primary]" place>
+                    <option [value]="-1" [selected]="true" disabled class="text-sm text-[--color-text-primary]">
                         Seleccione un país</option>
                     @for (item of countryList(); track $index) {
                     <option [value]="$index">{{item.name}}</option>

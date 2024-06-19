@@ -81,8 +81,10 @@ export class CreatePlantModalComponent implements OnInit {
   }
 
   close() {
-    this.showModal.set(false);
     this.plantForm.reset();
+    this.name.setValue("");
+    this.countryIndex.setValue(-1)
+    this.showModal.set(false);
   }
 
 }
