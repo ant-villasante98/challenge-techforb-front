@@ -5,6 +5,7 @@ import { CreatePlant } from '../../models/create-plant';
 import { Observable, map } from 'rxjs';
 import { Plant } from '../../models/plant';
 import { SuccessResponse } from '../../models/success-response';
+import { GlobalReading } from '../../models/global-reading';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class PlantService {
   get(): Observable<Plant[]> {
     return this.httpClient.get<SuccessResponse<Plant[]>>(this.URL_API).pipe(
       map(res => res.data)
-    )
+    );
+  }
+
+  getGlobalReading(): Observable<GlobalReading> {
+    return this.httpClient.get<SuccessResponse<GlobalReading>>(`${this.URL_API}/global-reading`)
+      .pipe(map(res => res.data));
   }
 }

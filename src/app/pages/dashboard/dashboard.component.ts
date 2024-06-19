@@ -19,6 +19,10 @@ export class DashboardComponent implements OnInit {
   title = signal<string>("");
 
   ngOnInit(): void {
+    this.checkTitle()
+  }
+
+  checkTitle() {
     this.title.set(this.route.snapshot.children[0].data["title"] ?? "hola");
 
     this.router.events.subscribe({

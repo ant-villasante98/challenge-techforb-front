@@ -60,7 +60,7 @@ export class CreatePlantModalComponent implements OnInit {
     let newPlant: CreatePlant = {
       name: this.name.value,
       countryName: country.name,
-      contryFlag: country.flagImage
+      countryFlag: country.flagImage
     }
     console.log(newPlant)
     this.isDisable.set(true);

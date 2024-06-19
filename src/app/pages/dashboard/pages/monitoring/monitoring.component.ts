@@ -5,6 +5,7 @@ import { CreatePlantModalComponent } from './components/create-plant-modal/creat
 import { PlantService } from '../../../../shared/services/plant.service';
 import { Plant } from '../../../../models/plant';
 import { PlantActionComponent } from './components/plant-action/plant-action.component';
+import { GlobalReading } from '../../../../models/global-reading';
 
 @Component({
   selector: 'app-monitoring',
@@ -18,9 +19,26 @@ export class MonitoringComponent implements OnInit {
 
   showCreatePlant = signal<boolean>(false)
   plantList = signal<Plant[]>([])
+  globalReading = signal<GlobalReading>({
+    disableSensors: 0,
+    mediumAlerts: 0,
+    readingOK: 0,
+    redAlerts: 0
+  });
 
   ngOnInit(): void {
     this.getPlants();
+    this.getGlobalRading();
+  }
+
+
+  getGlobalRading() {
+    this.plantService.getGlobalReading().subscribe({
+      next: (data) => {
+        console.log(data)
+        this.globalReading.set(data);
+      }
+    });
   }
 
   getPlants() {
