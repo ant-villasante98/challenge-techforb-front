@@ -6,6 +6,7 @@ import { Observable, map } from 'rxjs';
 import { Plant } from '../../models/plant';
 import { SuccessResponse } from '../../models/success-response';
 import { GlobalReading } from '../../models/global-reading';
+import { UpdatePlant } from '../../models/update-plant';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,11 @@ export class PlantService {
 
   deleteOne(id: number): Observable<any> {
     return this.httpClient.delete(`${this.URL_API}/${id}`)
+
+  }
+
+  update(id: number, update: UpdatePlant) {
+    return this.httpClient.patch(`${this.URL_API}/${id}`, update)
 
   }
 

@@ -8,7 +8,7 @@ export class CustomBtnDirective implements OnInit {
   domElement!: HTMLElement;
 
   @Input({ required: true }) color: "primary" | "secundary" | "outline" = "primary"
-  @Input() text: "white" | "black" = "black"
+  @Input() text: string = "black"
 
   constructor(private elmentRef: ElementRef<HTMLElement>, private renderer: Renderer2) {
   }

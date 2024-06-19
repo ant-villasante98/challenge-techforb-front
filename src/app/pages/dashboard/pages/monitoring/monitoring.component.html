@@ -104,8 +104,8 @@
                         </td>
                         <td>
                             <div>
-                                <app-plant-action [plant-id]="item.id"
-                                    (deleteEventEmitter)="deletePlant(item.id)"></app-plant-action>
+                                <app-plant-action [plant-id]="item.id" (deleteEventEmitter)="deletePlant(item.id)"
+                                    (updateEventEmitter)="actionUpdatePlant(item)"></app-plant-action>
                             </div>
 
                         </td>
@@ -119,3 +119,5 @@
 </div>
 
 <app-create-plant-modal [show-create-plant]="showCreatePlant" (newPlantEmitter)="ngOnInit()"></app-create-plant-modal>
+<app-update-plant-modal [showModal]="showUpdatePlant" [plant]="selectedPlant"
+    (updateEvent)="updatePlant($event)"></app-update-plant-modal>

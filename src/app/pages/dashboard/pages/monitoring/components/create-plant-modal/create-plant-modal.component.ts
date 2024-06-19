@@ -62,7 +62,6 @@ export class CreatePlantModalComponent implements OnInit {
       countryName: country.name,
       countryFlag: country.flagImage
     }
-    console.log(newPlant)
     this.isDisable.set(true);
 
     this.plantService.create(newPlant).subscribe({

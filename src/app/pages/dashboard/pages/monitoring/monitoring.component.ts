@@ -6,11 +6,12 @@ import { PlantService } from '../../../../shared/services/plant.service';
 import { Plant } from '../../../../models/plant';
 import { PlantActionComponent } from './components/plant-action/plant-action.component';
 import { GlobalReading } from '../../../../models/global-reading';
+import { UpdatePlantModalComponent } from './components/update-plant-modal/update-plant-modal.component';
 
 @Component({
   selector: 'app-monitoring',
   standalone: true,
-  imports: [ReadingCardComponent, CustomBtnDirective, CreatePlantModalComponent, PlantActionComponent],
+  imports: [ReadingCardComponent, CustomBtnDirective, CreatePlantModalComponent, PlantActionComponent, UpdatePlantModalComponent],
   templateUrl: './monitoring.component.html',
   styleUrl: './monitoring.component.css'
 })
@@ -18,8 +19,11 @@ export class MonitoringComponent implements OnInit {
 
   private plantService = inject(PlantService);
 
-  showCreatePlant = signal<boolean>(false)
-  plantList = signal<Plant[]>([])
+  selectedPlant: Plant | null = null;
+
+  showCreatePlant = signal<boolean>(false);
+  showUpdatePlant = signal<boolean>(false);
+  plantList = signal<Plant[]>([]);
   globalReading = signal<GlobalReading>({
     disableSensors: 0,
     mediumAlerts: 0,
@@ -36,7 +40,6 @@ export class MonitoringComponent implements OnInit {
   getGlobalRading() {
     this.plantService.getGlobalReading().subscribe({
       next: (data) => {
-        console.log(data)
         this.globalReading.set(data);
       }
     });
@@ -56,6 +59,27 @@ export class MonitoringComponent implements OnInit {
         this.ngOnInit()
       }
     });
+  }
+
+  actionUpdatePlant(value: Plant) {
+    this.selectedPlant = value;
+    this.showUpdatePlant.set(true);
+  }
+
+  updatePlant(value: Plant) {
+
+    this.plantService.update(value.id, {
+      numberOfDisabledSensors: value.numberOfDisabledSensors,
+      numberOfMediumAlerts: value.numberOfMediumAlerts,
+      numberOfReadings: value.numberOfReadings,
+      numberOfRedAlerts: value.numberOfRedAlerts,
+    }).subscribe({
+      next: () => {
+        console.log("Actualizacion con exito")
+      }
+    });
+    this.ngOnInit();
+
   }
 
 }

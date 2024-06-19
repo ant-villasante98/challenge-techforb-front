@@ -1,1 +1,88 @@
-<p>update-plant-modal works!</p>
+<app-wrap-modal [showModal]="showModal" [staticModal]="true">
+    <div class="relative m-auto bg-white rounded-2xl py-5 px-8 pb-7">
+        <p class="text-[14px] text-black poppins-medium">Editar planta</p>
+        <form class="mt-4" [formGroup]="plantForm" (submit)="submitUpdate()">
+            <div class="md:grid md:grid-cols-2 md: gap-x-4">
+
+                <!-- nombre de planta -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="name"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        Nombre de Planta
+                    </label>
+                    <input type="text" name="name" id="name" [value]="plant?.name"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-[#F0F0F0] border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        disabled />
+                </div>
+                <!-- país -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="country"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        País
+                    </label>
+                    <input type="text" name="country" id="country" [value]="plant?.country?.name"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-[#F0F0F0] border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        disabled />
+                </div>
+                <!-- cantidad de lecturas -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="number-of-reading"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        Cantidad de lecturas
+                    </label>
+                    <input formControlName="numberOfReadings" type="number" [min]="0" name="number-of-reading"
+                        id="number-of-reading"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        placeholder="Ingrese" />
+                </div>
+                <!-- sensores deshabilitados -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="number-of-disable-sensors"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        Sensores deshabilitados
+                    </label>
+                    <input formControlName="numberOfDisabledSensors" type="number" [min]="0"
+                        name="number-of-disable-sensors" id="number-of-disable-sensors"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        placeholder="Ingrese " />
+                </div>
+                <!-- altertas medias -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="number-of-medium-alerts"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        Alertas medias
+                    </label>
+                    <input formControlName="numberOfMediumAlerts" type="number" [min]="0" name="number-of-medium-alerts"
+                        id="number-of-medium-alerts"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        placeholder="Ingrese " />
+                </div>
+                <!-- alertas rojas -->
+                <div class="relative z-0 w-full group mb-2">
+                    <label for="number-of-red-alerts"
+                        class="bg-[--backgroud-primary] px-1 left-0 peer-focus:font-medium text-[14px] text-[#838B9E] ">
+                        Alertas Rojas
+                    </label>
+                    <input formControlName="numberOfRedAlerts" type="number" [min]="0" name="number-of-red-alerts"
+                        id="number-of-red-alerts"
+                        class="block py-3 px-3 w-full text-sm text-[--color-text-primary] bg-transparent border border-[#C6C9D2] rounded-xl appearance-none focus:outline-none focus:ring-0 peer"
+                        placeholder="Ingrese " />
+                </div>
+            </div>
+
+            <div class="text-[14px] poppins-medium flex flex-row gap-3 mx-auto justify-center mt-6">
+                <div>
+                    <button (click)="close()" [disabled]="isDisable()"
+                        class="rounded-md border-[#33A3AA] text-[#33A3AA] px-[0] py-1.5 w-[120px]" appCustomBtn
+                        [color]="'outline'" [text]="'[#33A3AA]'">Cancelar</button>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="isDisable()"
+                        class="rounded-md px-[0] py-1.5 w-[120px] border-[#33A3AA]" appCustomBtn [color]="'primary'"
+                        [text]="'white'">Actualizar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</app-wrap-modal>
