@@ -96,12 +96,16 @@
                                 {{item.name}}
                             </div>
                         </td>
-                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
-                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
-                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">12340</td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">{{item.numberOfReadings}}
+                        </td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">
+                            {{item.numberOfMediumAlerts}}</td>
+                        <td class="text-[#D70000] text-[14px] poppins-regular md:text-black">{{item.numberOfRedAlerts}}
+                        </td>
                         <td>
                             <div>
-                                <app-plant-action [plant-id]="item.id"></app-plant-action>
+                                <app-plant-action [plant-id]="item.id"
+                                    (deleteEventEmitter)="deletePlant(item.id)"></app-plant-action>
                             </div>
 
                         </td>

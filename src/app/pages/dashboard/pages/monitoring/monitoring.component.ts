@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject, signal } from '@angular/core';
 import { ReadingCardComponent } from './components/reading-card/reading-card.component';
 import { CustomBtnDirective } from '../../../../shared/directives/custom-btn.directive';
 import { CreatePlantModalComponent } from './components/create-plant-modal/create-plant-modal.component';
@@ -15,6 +15,7 @@ import { GlobalReading } from '../../../../models/global-reading';
   styleUrl: './monitoring.component.css'
 })
 export class MonitoringComponent implements OnInit {
+
   private plantService = inject(PlantService);
 
   showCreatePlant = signal<boolean>(false)
@@ -48,4 +49,13 @@ export class MonitoringComponent implements OnInit {
       }
     })
   }
+
+  deletePlant(id: number) {
+    this.plantService.deleteOne(id).subscribe({
+      next: () => {
+        this.ngOnInit()
+      }
+    });
+  }
+
 }

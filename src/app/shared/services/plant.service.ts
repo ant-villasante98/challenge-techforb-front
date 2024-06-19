@@ -27,6 +27,11 @@ export class PlantService {
     );
   }
 
+  deleteOne(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.URL_API}/${id}`)
+
+  }
+
   getGlobalReading(): Observable<GlobalReading> {
     return this.httpClient.get<SuccessResponse<GlobalReading>>(`${this.URL_API}/global-reading`)
       .pipe(map(res => res.data));
