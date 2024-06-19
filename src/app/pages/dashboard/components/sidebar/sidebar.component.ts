@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthManagerService } from '../../../../shared/services/auth-manager.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,5 +10,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  private router = inject(Router);
+  private authManager = inject(AuthManagerService);
 
+  logout() {
+    this.authManager.rmCreadentials();
+    this.router.navigateByUrl("/auth/login");
+  }
 }
