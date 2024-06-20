@@ -12,12 +12,12 @@ export const errorApiInterceptor: HttpInterceptorFn = (req, next) => {
   const authManager = inject(AuthManagerService);
   const router = inject(Router);
 
-  console.log(`--Interceptor-Error: peticion ${req.url}`)
 
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
 
+      console.log(`--Interceptor-Error: peticion ${req.url}`)
       // cuando el acceso es unauthorized
       if (error.status == HttpStatusCode.Unauthorized) {
 

@@ -17,10 +17,10 @@
     @if (showActions()) {
 
     <div
-        class="absolute border-2 top-4 right-[calc(100%_+_6px)] rounded-md shadow-md min-w-[130px] bg-white [&_button]:py-2 [&_button]:px-4 [&_button]:w-full [&_button]:text-start">
+        class="absolute border-2 top-4 right-[calc(100%_+_6px)] rounded-md shadow-md min-w-[130px] bg-white [&_button]:py-2 [&_button]:px-4 [&_button]:w-full [&_button]:text-start overflow-hidden">
 
         <button (click)="clickUpdate()" class="block hover:bg-slate-100">Editar</button>
-        <button (click)="clickRemove()" class="block hover:bg-slate-100">Eliminar</button>
+        <button (click)="clickRemove()" class="block hover:bg-red-500">Eliminar</button>
     </div>
     }
 </div>

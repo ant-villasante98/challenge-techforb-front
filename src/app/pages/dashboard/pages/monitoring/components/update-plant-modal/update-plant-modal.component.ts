@@ -44,6 +44,18 @@ export class UpdatePlantModalComponent implements OnInit {
     })
 
   }
+  get numberOfReadings() {
+    return this.plantForm.controls["numberOfReadings"];
+  }
+  get numberOfDisabledSensors() {
+    return this.plantForm.controls["numberOfDisabledSensors"];
+  }
+  get numberOfMediumAlerts() {
+    return this.plantForm.controls["numberOfMediumAlerts"];
+  }
+  get numberOfRedAlerts() {
+    return this.plantForm.controls["numberOfRedAlerts"];
+  }
 
   close() {
     this.showModal.set(false);
@@ -52,7 +64,13 @@ export class UpdatePlantModalComponent implements OnInit {
   submitUpdate() {
     if (this.plant) {
       console.log(this.plant.id)
-      this.updateEvent.emit(this.plant);
+      this.updateEvent.emit({
+        ...this.plant,
+        numberOfReadings: this.numberOfReadings.value,
+        numberOfDisabledSensors: this.numberOfDisabledSensors.value,
+        numberOfMediumAlerts: this.numberOfMediumAlerts.value,
+        numberOfRedAlerts: this.numberOfRedAlerts.value
+      });
     }
   }
 

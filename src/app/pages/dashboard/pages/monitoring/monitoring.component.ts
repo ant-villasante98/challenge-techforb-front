@@ -67,6 +67,7 @@ export class MonitoringComponent implements OnInit {
   }
 
   updatePlant(value: Plant) {
+    console.log()
 
     this.plantService.update(value.id, {
       numberOfDisabledSensors: value.numberOfDisabledSensors,
@@ -75,10 +76,10 @@ export class MonitoringComponent implements OnInit {
       numberOfRedAlerts: value.numberOfRedAlerts,
     }).subscribe({
       next: () => {
-        console.log("Actualizacion con exito")
+        this.showUpdatePlant.set(false);
+        this.ngOnInit();
       }
     });
-    this.ngOnInit();
 
   }
 
