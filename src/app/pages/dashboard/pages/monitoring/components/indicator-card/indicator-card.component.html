@@ -1,0 +1,39 @@
+<div class="grid grid-cols-[70%_30%] bg-white rounded-xl shadow-sm-light p-5">
+    <div class="flex flex-col text-[12px] poppins-regular justify-center gap-1">
+        <div class="">
+            <span class="text-[#8E8EA1] ">
+                {{title}}
+            </span>
+        </div>
+        <div class="grid grid-cols-3 justify-between">
+            <div class="flex flex-row gap-2">
+                <div>
+                    <img class="size-[14px]" src="assets/svg/r-ok.svg" alt="icon">
+                </div>
+                <div>
+                    <span class="text-black">{{ok}}</span>
+                </div>
+
+            </div>
+            <div class="flex flex-row gap-2">
+                <div>
+                    <img class="size-[14px]" src="assets/svg/r-media.svg" alt="icon">
+                </div>
+                <div>
+                    <span class="text-black">{{warning}}</span>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2">
+                <div>
+                    <img class="size-[14px]" src="assets/svg/r-red.svg" alt="icon">
+                </div>
+                <div>
+                    <span class="text-black">{{alert}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="size-[60px]" [src]="icon" alt="imagen">
+    </div>
+</div>

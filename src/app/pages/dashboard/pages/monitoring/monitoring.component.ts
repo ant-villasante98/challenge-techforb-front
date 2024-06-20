@@ -8,11 +8,12 @@ import { PlantActionComponent } from './components/plant-action/plant-action.com
 import { GlobalReading } from '../../../../models/global-reading';
 import { UpdatePlantModalComponent } from './components/update-plant-modal/update-plant-modal.component';
 import { ApiLoadService } from '../../../../shared/services/api-load.service';
+import { IndicatorCardComponent } from './components/indicator-card/indicator-card.component';
 
 @Component({
   selector: 'app-monitoring',
   standalone: true,
-  imports: [ReadingCardComponent, CustomBtnDirective, CreatePlantModalComponent, PlantActionComponent, UpdatePlantModalComponent],
+  imports: [ReadingCardComponent, CustomBtnDirective, CreatePlantModalComponent, PlantActionComponent, UpdatePlantModalComponent, IndicatorCardComponent],
   templateUrl: './monitoring.component.html',
   styleUrl: './monitoring.component.css'
 })
