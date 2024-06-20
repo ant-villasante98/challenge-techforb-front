@@ -7,6 +7,7 @@ import { Plant } from '../../../../models/plant';
 import { PlantActionComponent } from './components/plant-action/plant-action.component';
 import { GlobalReading } from '../../../../models/global-reading';
 import { UpdatePlantModalComponent } from './components/update-plant-modal/update-plant-modal.component';
+import { ApiLoadService } from '../../../../shared/services/api-load.service';
 
 @Component({
   selector: 'app-monitoring',
@@ -16,6 +17,7 @@ import { UpdatePlantModalComponent } from './components/update-plant-modal/updat
   styleUrl: './monitoring.component.css'
 })
 export class MonitoringComponent implements OnInit {
+  private apiLoad = inject(ApiLoadService);
 
   private plantService = inject(PlantService);
 
@@ -68,7 +70,7 @@ export class MonitoringComponent implements OnInit {
 
   updatePlant(value: Plant) {
     console.log()
-
+    this.apiLoad.start();
     this.plantService.update(value.id, {
       numberOfDisabledSensors: value.numberOfDisabledSensors,
       numberOfMediumAlerts: value.numberOfMediumAlerts,
@@ -78,6 +80,12 @@ export class MonitoringComponent implements OnInit {
       next: () => {
         this.showUpdatePlant.set(false);
         this.ngOnInit();
+      },
+      error: () => {
+        this.apiLoad.end();
+      },
+      complete: () => {
+        this.apiLoad.end();
       }
     });
 
