@@ -59,7 +59,7 @@ export class AuthManagerService {
   }
 
   // validar UserAuth
-  isNotValidateUserAuth(value: UserAuth): boolean {
+  private isNotValidateUserAuth(value: UserAuth): boolean {
     let res: boolean = value.accessToken == undefined || value.refreshToken == undefined || value.type == undefined;
     return res;
   }
