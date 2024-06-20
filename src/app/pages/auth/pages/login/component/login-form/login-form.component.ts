@@ -5,6 +5,7 @@ import { UserLogin } from '../../../../../../models/user-login';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
+import { ApiLoadService } from '../../../../../../shared/services/api-load.service';
 
 @Component({
   selector: 'app-login-form',
@@ -17,6 +18,7 @@ export class LoginFormComponent implements OnInit {
   private authService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
   private route = inject(Router);
+  private apiLoad = inject(ApiLoadService);
 
   formLogin: FormGroup = new FormGroup({});
   isSubmit = signal<boolean>(false);
@@ -24,9 +26,6 @@ export class LoginFormComponent implements OnInit {
   showPassword = signal<boolean>(false);
 
   showUnauthorized = signal<boolean>(false);
-
-
-
 
   constructor() {
 
@@ -67,6 +66,7 @@ export class LoginFormComponent implements OnInit {
     }
 
     this.formLogin.disable();
+    this.apiLoad.start()
     this.authService.login(model)
       .subscribe({
         next: (value) => {
@@ -77,10 +77,12 @@ export class LoginFormComponent implements OnInit {
           this.formLogin.enable();
           this.isSubmit.set(false);
           this.showUnauthorized.set(true);
+          this.apiLoad.end();
         },
         complete: () => {
           this.formLogin.enable();
           this.isSubmit.set(false);
+          this.apiLoad.end()
         }
       }
       );

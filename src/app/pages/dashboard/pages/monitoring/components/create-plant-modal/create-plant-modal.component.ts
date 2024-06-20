@@ -7,6 +7,7 @@ import { CountryService } from '../../../../../../shared/services/country.servic
 import { Country } from '../../../../../../models/country';
 import { PlantService } from '../../../../../../shared/services/plant.service';
 import { CreatePlant } from '../../../../../../models/create-plant';
+import { ApiLoadService } from '../../../../../../shared/services/api-load.service';
 
 @Component({
   selector: 'app-create-plant-modal',
@@ -22,6 +23,7 @@ export class CreatePlantModalComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private countryService = inject(CountryService);
   private plantService = inject(PlantService);
+  private apiLoad = inject(ApiLoadService);
 
   countryList = signal<Country[]>([])
 
@@ -63,7 +65,7 @@ export class CreatePlantModalComponent implements OnInit {
       countryFlag: country.flagImage
     }
     this.isDisable.set(true);
-
+    this.apiLoad.start();
     this.plantService.create(newPlant).subscribe({
       next: () => {
         this.newPlantEmitter.emit();
@@ -71,9 +73,11 @@ export class CreatePlantModalComponent implements OnInit {
       },
       error: () => {
         this.isDisable.set(false);
+        this.apiLoad.end();
       },
       complete: () => {
         this.isDisable.set(false);
+        this.apiLoad.end();
       }
     })
 

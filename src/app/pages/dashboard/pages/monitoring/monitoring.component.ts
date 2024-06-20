@@ -56,9 +56,16 @@ export class MonitoringComponent implements OnInit {
   }
 
   deletePlant(id: number) {
+    this.apiLoad.start();
     this.plantService.deleteOne(id).subscribe({
       next: () => {
         this.ngOnInit()
+      },
+      error: () => {
+        this.apiLoad.end();
+      },
+      complete: () => {
+        this.apiLoad.end();
       }
     });
   }
