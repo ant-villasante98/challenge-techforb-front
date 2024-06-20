@@ -4,13 +4,13 @@ import { AuthService } from '../../../../services/auth.service';
 import { UserLogin } from '../../../../../../models/user-login';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiLoadService } from '../../../../../../shared/services/api-load.service';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [CustomBtnDirective, ReactiveFormsModule, NgClass],
+  imports: [CustomBtnDirective, ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
