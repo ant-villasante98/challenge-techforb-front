@@ -26,6 +26,7 @@ export class MonitoringComponent implements OnInit {
 
   showCreatePlant = signal<boolean>(false);
   showUpdatePlant = signal<boolean>(false);
+  loadingPlant = signal<boolean>(false);
   plantList = signal<Plant[]>([]);
   globalReading = signal<GlobalReading>({
     disableSensors: 0,
@@ -49,9 +50,16 @@ export class MonitoringComponent implements OnInit {
   }
 
   getPlants() {
+    this.loadingPlant.set(true)
     this.plantService.get().subscribe({
       next: (res) => {
         this.plantList.set(res);
+      },
+      error: () => {
+        this.loadingPlant.set(false)
+      },
+      complete: () => {
+        this.loadingPlant.set(false)
       }
     })
   }
