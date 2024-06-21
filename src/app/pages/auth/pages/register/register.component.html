@@ -69,9 +69,12 @@
                 </div>
             </button>
 
-            <!-- login fallido -->
+            <!-- password invalido -->
             @if (password.touched && password.errors?.["required"]) {
             <span class="pl-2 text-[13px] text-red-600">Contraseña requerida.</span>
+            }
+            @if (password.touched && password.errors?.["minlength"]) {
+            <span class="pl-2 text-[13px] text-red-600"> Debe tener minimo 8 caracteres.</span>
             }
         </div>
 

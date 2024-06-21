@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", Validators.compose([Validators.required, Validators.email])],
-      password: ["", Validators.compose([Validators.required, Validators.minLength(6)])]
+      password: ["", Validators.compose([Validators.required, Validators.minLength(8)])]
     })
 
   }
@@ -49,6 +49,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitRegister() {
+    console.log(this.password.errors)
     this.registerForm.markAllAsTouched();
     if (this.registerForm.invalid || this.isSubmit()) {
       return
