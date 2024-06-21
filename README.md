@@ -1,27 +1,31 @@
-# TechforbFront
+# Monitoreo de plantas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.10.
+## Descripción
 
-## Development server
+Este proyecto es una solución para el challenge técnico de Techforb. El objetivo es desarrollar un sistema de monitoreo de plantas para proporcionar información útil de las mismas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Acceso al servicio deployado
+- URL: https://challenge-techforb-nu.vercel.app
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Ejecurtar en local
 
-## Build
+Ejecutar `npm start` para iniciar la aplacacion. Navegar a  `http://localhost:4200/` .
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Servicios para el deploy
+- [Vercel](https://vercel.com)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Detalles
+- Interceptor para cargar el el access token.
+- Interceptor para el refresh token.
+- Carga perezosa de las paginas.
+- Validacion de los formularios.
+- Manejo y almacenamiento en el local storage de las creadenciales obtenidas por el backend.
+- Consumo de la api creada para el challenge.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Autor
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Helí Antonio Villasante Hilares - [perfil](https://www.linkedin.com/in/hel%C3%AD-antonio-villasante-hilares-96465b263/)
+- Agradecimientos especiales a Techforb por el desafío técnico y la oportunidad de desarrollar este proyecto.
