@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, WritableSignal, inject, signal } from '@angular/core';
-import { WrapModalComponent } from '../../../../../../shared/component/wrap-modal/wrap-modal.component';
+import { WrapModalComponent } from '../../../../../../shared/components/wrap-modal/wrap-modal.component';
 import { CustomBtnDirective } from '../../../../../../shared/directives/custom-btn.directive';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';

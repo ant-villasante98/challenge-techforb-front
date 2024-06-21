@@ -1,6 +1,6 @@
 import { Component, WritableSignal, inject } from '@angular/core';
 import { ApiLoadService } from '../../services/api-load.service';
-import { WrapModalComponent } from '../../component/wrap-modal/wrap-modal.component';
+import { WrapModalComponent } from '../wrap-modal/wrap-modal.component';
 
 @Component({
   selector: 'app-api-dialog',
